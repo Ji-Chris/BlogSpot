@@ -1,0 +1,15 @@
+import Link from "next/link";
+
+export default function Navbar() {
+  return (
+    <nav className="flex items-center justify-between px-6 py-4 bg-gray-900 text-white">
+      <h1 className="font-bold text-xl">BlogSpot</h1>
+
+      <div className="space-x-4">
+        <Link href="/">Home</Link>
+        <Link href="/saved">Saved</Link>
+        <Link href="/login">Login</Link>
+      </div>
+    </nav>
+  );
+}
