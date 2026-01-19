@@ -7,6 +7,7 @@ export default function Navbar() {
 
       <div className="space-x-4">
         <Link href="/">Home</Link>
+        <Link href="/blog">Blogs</Link>
         <Link href="/saved">Saved</Link>
         <Link href="/login">Login</Link>
       </div>
