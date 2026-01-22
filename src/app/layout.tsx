@@ -1,5 +1,21 @@
+import {Roboto_Serif, Roboto_Mono} from "next/font/google"
 import "./globals.css";
 import Navbar from "@/src/components/Navbar";
+
+export const metadata = {
+  title: 'BlogSpot',
+  description: 'Blogging site built on NextJS'
+}
+
+const robotoMono = Roboto_Mono({
+  variable: '--font-roboto-mono',
+  subsets: ['latin']
+});
+
+const robotoSerif = Roboto_Serif({
+  variable: '--font-roboto-serif',
+  subsets: ['latin']
+});
 
 export default function RootLayout({
   children,
@@ -8,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${robotoMono.variable} ${robotoSerif.variable}`}>
         <Navbar />
         <main className="p-6">{children}</main>
       </body>

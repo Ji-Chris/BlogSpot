@@ -1,34 +1,9 @@
 import Image from "next/image"
 import Link from "next/link";
 
-export default function BlogPage(){
-
-    const posts = [
-        {
-            id:1,
-            title: "blog 1",
-            authorName: "name 1",
-            body: "body 1",
-            pfpUrl: "default-pfp.svg",
-            imageUrl: "/blogImage.svg"
-        },
-        {
-            id:2,
-            title: "blog 2",
-            authorName: "name 1",
-            body: "body 2",
-            pfpUrl: "default-pfp.svg",
-            imageUrl: "/blogImage.svg"
-        },
-        {
-            id:3,
-            title: "blog 3",
-            authorName: "name 1",
-            body: "body 3",
-            pfpUrl: "default-pfp.svg",
-            imageUrl: "/blogImage.svg"
-        }
-    ];
+export default async function BlogPage(){
+    const posts = await fetch('https://api.vercel.app/blog').then(res => res.json());
+    
 
     return(
         <div id="main-container" className="flex flex-row justify-start ">
@@ -44,14 +19,16 @@ export default function BlogPage(){
 
                 </div>
 
-                <div className="blog-list m-5">
-                    {posts.map((post)=>{
+                <div className="blog-list m-5 gap-5">
+                    {/* any type to be resolved later */}
+                    {posts.map((post:any)=>{
                         return(
-                            <div key={post.id} className="individual-blog grid grid-cols-4 justify-start">
-                                <div>
+                            <div key={post.id} className="individual-blog flex flex-row justify-start border 
+                            p-5 rounded-xl shadow-xl">
+                                <div className="flex flex-col items-start gap-4 m-4">
                                     <Link href={`/blog/${post.id}`}>
                                         <Image 
-                                        src={post.imageUrl}
+                                        src='/blogImage.svg'
                                         alt="blog-image"
                                         width={100}
                                         height={100}
@@ -60,17 +37,17 @@ export default function BlogPage(){
 
                                     <div>
                                         <Image 
-                                        src={post.pfpUrl}
+                                        src='/default-pfp.svg'
                                         alt="author-image"
                                         width={10}
                                         height={10}
                                         />
-                                        <h4>{post.authorName}</h4>
+                                        <h4>{post.author}</h4>
                                     </div>
                                 </div>
-                                <div className="flex flex-col">
-                                    <h2>{post.title}</h2>
-                                    <p>{post.body}</p>
+                                <div className="flex flex-col gap-4 p-3">
+                                    <h2 className="font-bold text-xl">{post.title}</h2>
+                                    <p>{post.content}</p>
                                 </div>
 
                             </div>
