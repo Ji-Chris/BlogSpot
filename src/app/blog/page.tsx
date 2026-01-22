@@ -1,8 +1,9 @@
+'use client';
 import Image from "next/image"
 import Link from "next/link";
 
 export default async function BlogPage(){
-    const posts = await fetch('https://api.vercel.app/blog').then(res => res.json());
+    const posts = await fetch('https://jsonplaceholder.typicode.com/posts').then(res => res.json());
     
 
     return(
@@ -40,13 +41,13 @@ export default async function BlogPage(){
                                         width={10}
                                         height={10}
                                         />
-                                        <h4>{post.author}</h4>
+                                        <h4>{post.userId}</h4>
                                     </div>
                                 </div>
 
                                 <div className="flex flex-col gap-4 p-3">
                                     <h2 className="font-bold text-xl">{post.title}</h2>
-                                    <p>{post.content}</p>
+                                    <p>{post.body}</p>
                                     <Link href={`/blog/${post.id}`}>
                                         <h6 className="text-blue-600 text-blue-600 hover:text-blue-800 transition">
                                             Read More
