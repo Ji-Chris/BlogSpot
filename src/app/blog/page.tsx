@@ -26,14 +26,12 @@ export default async function BlogPage(){
                             <div key={post.id} className="individual-blog flex flex-row justify-start border 
                             p-5 rounded-xl shadow-xl">
                                 <div className="flex flex-col items-start gap-4 m-4">
-                                    <Link href={`/blog/${post.id}`}>
-                                        <Image 
+                                    <Image 
                                         src='/blogImage.svg'
                                         alt="blog-image"
                                         width={100}
                                         height={100}
-                                        />
-                                    </Link>
+                                    />
 
                                     <div>
                                         <Image 
@@ -45,9 +43,15 @@ export default async function BlogPage(){
                                         <h4>{post.author}</h4>
                                     </div>
                                 </div>
+
                                 <div className="flex flex-col gap-4 p-3">
                                     <h2 className="font-bold text-xl">{post.title}</h2>
                                     <p>{post.content}</p>
+                                    <Link href={`/blog/${post.id}`}>
+                                        <h6 className="text-blue-600 text-blue-600 hover:text-blue-800 transition">
+                                            Read More
+                                        </h6>
+                                    </Link>
                                 </div>
 
                             </div>
