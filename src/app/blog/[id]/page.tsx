@@ -2,11 +2,10 @@ import { Suspense } from "react"
 import { BlogContent } from "./BlogContent"
 
 async function getBlogPostById(id: string){
-  console.log("fetch id: ",id)
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/posts${id}`,
-    {cache: "no-store"}
-  )
+
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+
+  console.log("Response status:", res.status)
 
   if (!res.ok) {
     throw new Error("Fuck")
@@ -15,14 +14,14 @@ async function getBlogPostById(id: string){
   return res.json()
 }
 
-export default function BlogPage({
+export default async function BlogPage({
   params,
 }: {
-  params: {id: string}
+  params: Promise<{id: string}>
 }) {
-  const {id} = await params;
-  const postPromise = getBlogPostById({id})
-  console.log(postPromise)
+  const { id } = await params;
+  const postPromise = getBlogPostById(id)
+  console.log("params object:", id)
 
   return (
     <Suspense fallback={<div>Loading blog...</div>}>
