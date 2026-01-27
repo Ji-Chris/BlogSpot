@@ -5,9 +5,9 @@ export default async function HomePage(){
     return (
         <div className="main-container">
         <section className="py-20 text-center flex flex-col gap-6">
-            <h1 className="text-5xl font-bold">DevNotes</h1>
+            <h1 className="text-5xl font-bold">BlogSpot</h1>
             <p className="text-lg text-gray-600 max-w-xl mx-auto">
-                Articles on Web Development, Next.js, and Modern Tech.
+                Blog Webste for fun
             </p>
 
             <div className="flex justify-center gap-4">
@@ -69,13 +69,6 @@ export default async function HomePage(){
                 </button>
             </div>
         </section>
-
-        <footer className="border-t py-8 text-center text-sm text-gray-500">
-            © {new Date().getFullYear()} Basic foo
-        </footer>
-
-
-
 
     </div>
     )
