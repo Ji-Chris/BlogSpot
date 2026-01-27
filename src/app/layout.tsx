@@ -1,6 +1,7 @@
 import {Roboto_Serif, Roboto_Mono} from "next/font/google"
 import "./globals.css";
 import Navbar from "@/src/components/Navbar";
+import Footer from "../components/Footer";
 
 export const metadata = {
   title: 'BlogSpot',
@@ -27,7 +28,8 @@ export default function RootLayout({
       <body className={`${robotoMono.variable} ${robotoSerif.variable}`}>
         <Navbar />
         <main className="p-6">{children}</main>
-      </body>
+        <Footer />     
+        </body>
     </html>
   );
 }
