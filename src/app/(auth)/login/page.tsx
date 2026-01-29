@@ -1,7 +1,86 @@
-import Image from "next/image";
+"use client"
 
-export default function Login(){
-    return(
-        <h1>Login Page</h1>
-    )
+import { useState } from "react"
+
+export default function LoginPage() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setLoading(true)
+    setError("")
+
+    try {
+      // without auth 
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      })
+
+      if (!res.ok) {
+        throw new Error("Invalid credentials")
+      }
+
+      // redirect on success
+      window.location.href = "/"
+    } catch (err: any) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <div className="login-container min-h-screen flex items-center justify-center bg-gray-50">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-md bg-white p-6 rounded-xl shadow-md flex flex-col gap-4"
+      >
+        <h1 className="text-2xl font-bold text-center">Login</h1>
+
+        {error && (
+          <p className="text-red-600 text-sm text-center">{error}</p>
+        )}
+
+        <div className="email-field flex flex-col gap-1">
+          <label className="text-sm font-medium">Email</label>
+          <input
+            type="email"
+            required
+            className="border rounded px-3 py-2 focus:outline-none focus:ring"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+        </div>
+
+        <div className="psswd-field flex flex-col gap-1">
+          <label className="text-sm font-medium">Password</label>
+          <input
+            type="password"
+            required
+            className="border rounded px-3 py-2 focus:outline-none focus:ring"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+        </div>
+
+        <button
+          disabled={loading}
+          className="bg-black text-white py-2 rounded hover:bg-gray-800 disabled:opacity-50"
+        >
+          {loading ? "Logging in..." : "Login"}
+        </button>
+
+        <p className="text-sm text-center text-gray-600">
+          <a href="/register" className="underline">
+            Sign up instead?
+          </a>
+        </p>
+      </form>
+    </div>
+  )
 }
