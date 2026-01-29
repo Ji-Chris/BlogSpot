@@ -1,21 +1,36 @@
 import Image from "next/image"
-import Link from "next/link";
+import Link from "next/link"
+import Form from "next/form"
 
-export default async function BlogPage(){
+export default async function BlogPage(
+    params:{
+        params:string
+    }
+){
     const posts = await fetch('https://jsonplaceholder.typicode.com/posts').then(res => res.json());
     
 
     return(
         <div id="main-container" className="flex flex-row justify-start ">
             <section id="blog-list" className="flex flex-col  w-full p-6">
-                <div className="flex justify-end gap-3 border border-black/50 p-3 m-5">
-
-                    <button id="sort-button" className="border-2 p-2 rounded hover:bg-gray-100">
-                        <Image src="/sort-icon.svg" alt="sort" width={12} height={12} />
-                    </button>
-                    <button id="filter-button" className="border-2 p-2 rounded hover:bg-gray-100">
-                        <Image src="/filter-32.svg" alt="sort" width={12} height={12} />
-                    </button>
+                <div className="flex justify-start gap-3 border border-black/50 p-3 m-5">
+                    <Form action="" className="flex items-start">
+                        <input
+                            type="search"
+                            name="q"
+                            placeholder="Search blogs..."
+                            className="border px-3 py-2 rounded focus:outline-none focus:ring"
+                        />
+                    </Form>
+                    <div className="ml-auto justify-end">
+                        <button className="sort-button border-2 p-2 rounded hover:bg-gray-100">
+                            <Image src="/sort-icon.svg" alt="sort" width={12} height={12} />
+                        </button>
+                        <button className="filter-button border-2 p-2 rounded hover:bg-gray-100">
+                            <Image src="/filter-32.svg" alt="sort" width={12} height={12} />
+                        </button>
+                    </div>
+                    
 
                 </div>
 

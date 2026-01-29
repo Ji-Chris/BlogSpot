@@ -1,5 +1,5 @@
 import { Suspense } from "react"
-import { BlogContent } from "./BlogContent"
+import { BlogContent } from "../../../components/Blog/BlogContent"
 
 async function getBlogPostById(id: string){
 

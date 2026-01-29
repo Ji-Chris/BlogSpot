@@ -18,6 +18,8 @@ export function BlogContent({
       </header>
 
       <Image
+          //to be replaced with fetchPriority later
+          preload={true}
           src="/blogImage.svg"
           alt={post.title}
           width={1200}
