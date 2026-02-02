@@ -25,7 +25,7 @@ export default function LoginPage() {
         throw new Error("Invalid credentials")
       }
 
-      // redirect on success
+      // push in router later
       window.location.href = "/"
     } catch (err: any) {
       setError(err.message)
