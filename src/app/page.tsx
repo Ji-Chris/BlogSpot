@@ -1,6 +1,8 @@
 import Image from "next/image"
+import { getServerSession } from "next-auth"
 
 export default async function HomePage(){
+
     const posts = await fetch("https://jsonplaceholder.typicode.com/posts").then(res => res.json())
     return (
         <div className="main-container">

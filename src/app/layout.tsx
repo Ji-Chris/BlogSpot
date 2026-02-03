@@ -26,9 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${robotoMono.variable} ${robotoSerif.variable}`}>
-        <Navbar />
-        <main className="p-6">{children}</main>
-        <Footer />     
+      
+          <Navbar />
+          <main className="p-6">{children}</main>
+          <Footer />
+        
+             
         </body>
     </html>
   );
