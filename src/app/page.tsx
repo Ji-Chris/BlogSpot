@@ -16,7 +16,7 @@ export default async function HomePage(){
                 </a>
 
                 <a href="/about" className="px-6 py-3 border rounded-lg">
-                    About Me
+                    About Project
                 </a>
 
             </div>
