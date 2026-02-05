@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import GithubLoginButton from "@/components/Login/GithubLoginButton"
+import LoginButtons from "@/components/Login/LoginButtons"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
@@ -69,7 +69,7 @@ export default function LoginPage() {
         > Login
         </button>
 
-        <GithubLoginButton/>
+        <LoginButtons/>
 
         <p className="text-sm text-center text-gray-600">
           <a href="/register" className="underline">

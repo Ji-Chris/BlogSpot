@@ -3,7 +3,7 @@
 import { signIn } from "next-auth/react"
 
 
-export default function GithubLoginButton(){
+export default function LoginButtons(){
     return (
         <button
             onClick={() => signIn("github",{
