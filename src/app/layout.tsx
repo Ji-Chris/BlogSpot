@@ -1,10 +1,11 @@
 import {Roboto_Serif, Roboto_Mono} from "next/font/google"
+import { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { NextAuthProvider } from "@/app/NextAuthProvider";
 
-export const metadata = {
+export const metadata:Metadata = {
   title: 'BlogSpot',
   description: 'Blogging site built on NextJS'
 }

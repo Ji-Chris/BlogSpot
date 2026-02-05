@@ -10,7 +10,8 @@ export default function Navbar() {
         <Link href="/saved">Saved</Link>
       </div>
 
-      <Link className="border p-3"href="/login">
+      <Link className="p-3 border font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+      href="/login">
         Login
       </Link>
     </nav>
