@@ -5,7 +5,7 @@ async function getBlogPostById(id: string){
 
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
 
-  console.log("Response status:", res.status)
+  //console.log("Response status:", res.status)
 
   if (!res.ok) {
     throw new Error("Fuck")

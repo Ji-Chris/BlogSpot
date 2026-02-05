@@ -1,17 +1,15 @@
 "use client"
 
 import { useState } from "react"
+import GithubLoginButton from "@/components/Login/GithubLoginButton"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setLoading(true)
-    setError("")
 
     try {
       // without auth 
@@ -28,9 +26,7 @@ export default function LoginPage() {
       // push in router later
       window.location.href = "/"
     } catch (err: any) {
-      setError(err.message)
-    } finally {
-      setLoading(false)
+      console.log(err.message)
     }
   }
 
@@ -69,11 +65,11 @@ export default function LoginPage() {
         </div>
 
         <button
-          disabled={loading}
-          className="bg-black text-white py-2 rounded hover:bg-gray-800 disabled:opacity-50"
-        >
-          {loading ? "Logging in..." : "Login"}
+          className="bg-sky-500 text-black py-2 rounded hover:bg-blue-600 transition ease-in duration-200 "
+        > Login
         </button>
+
+        <GithubLoginButton/>
 
         <p className="text-sm text-center text-gray-600">
           <a href="/register" className="underline">

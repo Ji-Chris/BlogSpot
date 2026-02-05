@@ -8,8 +8,11 @@ export default function Navbar() {
         <Link href="/">Home</Link>
         <Link href="/blog">Blogs</Link>
         <Link href="/saved">Saved</Link>
-        <Link href="/login">Login</Link>
       </div>
+
+      <Link className="border p-3"href="/login">
+        Login
+      </Link>
     </nav>
   );
 }
