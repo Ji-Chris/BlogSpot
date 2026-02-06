@@ -1,3 +1,3 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI
+const MONGODB_URI = 

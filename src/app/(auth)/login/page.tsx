@@ -7,6 +7,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
+  const [lloading, setLoading] = useState("")
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -65,9 +66,10 @@ export default function LoginPage() {
         </div>
 
         <button
-          className="bg-sky-500 text-black py-2 rounded hover:bg-blue-600 transition ease-in duration-200 "
+          className="cursor-pointer bg-sky-500 text-black py-2 rounded hover:bg-blue-600 transition ease-in duration-200 "
         > Login
         </button>
+
 
         <LoginButtons/>
 
