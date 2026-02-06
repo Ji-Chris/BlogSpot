@@ -33,8 +33,6 @@ export default function RootLayout({
           <main className="p-6">{children}</main>
           <Footer />
         </NextAuthProvider>
-        
-             
         </body>
     </html>
   );
