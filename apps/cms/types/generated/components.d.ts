@@ -7,7 +7,7 @@ export interface SharedMedia extends Struct.ComponentSchema {
     icon: 'file-video';
   };
   attributes: {
-    file: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
   };
 }
 
@@ -17,10 +17,7 @@ export interface SharedQuote extends Struct.ComponentSchema {
     displayName: 'Quote';
     icon: 'indent';
   };
-  attributes: {
-    body: Schema.Attribute.Text;
-    title: Schema.Attribute.String;
-  };
+  attributes: {};
 }
 
 export interface SharedRichText extends Struct.ComponentSchema {

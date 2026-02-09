@@ -8,6 +8,7 @@ export default function Navbar() {
         <Link href="/">Home</Link>
         <Link href="/blog">Blogs</Link>
         <Link href="/saved">Saved</Link>
+        <Link href="/about">About</Link>
       </div>
 
       <Link className="p-3 border font-semibold shadow-md focus:outline-none focus:ring-1 focus:ring-offset-1 rounded-lg"
