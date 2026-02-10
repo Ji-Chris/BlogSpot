@@ -2,8 +2,7 @@ import Image from "next/image"
 
 
 export default async function About(){
-    const res = await fetch("http://localhost:3000/api/about")
-    console.log(res.json())
+    const res = await fetch("http://localhost:1337/api/about?populate=image")
 
     if (!res.ok){
         throw new Error("Loading About page failed")
@@ -11,9 +10,9 @@ export default async function About(){
     
 
     const {data} = await res.json()
-    const {title, body , image} = data.attributes
+    const {title, body, image} = data
 
-    const imageUrl = image?.data?.attributes?.url 
+    const imageUrl = image?.data?.attributes?.url
     const altText = image?.data?.attributes?.alternativeText || "About image"
 
     return (
