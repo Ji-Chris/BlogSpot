@@ -15,6 +15,7 @@
     "turbo": "^2.8.3"
   },
   "dependencies": {
-    "@strapi/blocks-react-renderer": "^1.0.2"
+    "@strapi/blocks-react-renderer": "^1.0.2",
+    "better-auth": "^1.4.18"
   }
 }

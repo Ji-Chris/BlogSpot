@@ -6,7 +6,7 @@ export default async function HomePage(){
     const posts = await fetch("https://jsonplaceholder.typicode.com/posts").then(res => res.json())
     return (
         <div className="main-container">
-        <section className="py-20 text-center flex flex-col gap-6">
+        <section className="text-center py-20  flex flex-col gap-6">
             <h1 className="text-5xl font-bold">BlogSpot</h1>
             <p className="text-lg text-gray-600 max-w-xl mx-auto">
                 Blog Webste for fun
@@ -54,7 +54,7 @@ export default async function HomePage(){
         </section>
 
         <section className="py-20 text-center">
-            <h2 className="text-3xl font-semibold">Stay Updated</h2>
+            <h2 className="text-3xl font-semibold">Stay Updated(Template)</h2>
             <p className="text-gray-600 mt-3">
                 Get notified when new blogs are published.
             </p>
