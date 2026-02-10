@@ -12,5 +12,8 @@
   "packageManager": "pnpm@10.29.2",
   "devDependencies": {
     "turbo": "^2.8.3"
+  },
+  "dependencies": {
+    "@strapi/blocks-react-renderer": "^1.0.2"
   }
 }
