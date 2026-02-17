@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import LoginButtons from "@/components/Login/LoginButtons"
+import Link from "next/link"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
@@ -74,9 +75,9 @@ export default function LoginPage() {
         <LoginButtons/>
 
         <p className="text-sm text-center text-gray-600">
-          <a href="/register" className="underline">
+          <Link href="/register" className="underline">
             Sign up instead?
-          </a>
+          </Link>
         </p>
       </form>
     </div>

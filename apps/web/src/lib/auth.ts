@@ -1,11 +1,12 @@
-import NextAuth from "next-auth"
-import GitHubProvider from "next-auth/providers/github"
-import GoogleProvider from "next-auth/providers/google"
-
 
 import { betterAuth } from "better-auth";
 
 export const auth = betterAuth({
+
+  emailAndPassword: {
+    enabled:true
+  },
+  
   socialProviders: { 
     github: { 
       clientId: process.env.GITHUB_CLIENT_ID!, 
