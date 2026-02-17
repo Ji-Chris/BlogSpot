@@ -1,5 +1,4 @@
 import Image from "next/image"
-import { getServerSession } from "next-auth"
 
 export default async function HomePage(){
 
@@ -9,7 +8,7 @@ export default async function HomePage(){
         <section className="text-center py-20  flex flex-col gap-6">
             <h1 className="text-5xl font-bold">BlogSpot</h1>
             <p className="text-lg text-gray-600 max-w-xl mx-auto">
-                Blog Webste for fun
+                Blog Website for fun
             </p>
 
             <div className="flex justify-center gap-4">

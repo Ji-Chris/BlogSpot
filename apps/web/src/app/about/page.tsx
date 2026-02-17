@@ -1,45 +1,46 @@
 import Image from "next/image"
-import { BlocksRenderer } from "@strapi/blocks-react-renderer"
+
 
 
 export default async function About(){
-    const res = await fetch("http://localhost:1337/api/about?populate=image")
-
-    if (!res.ok){
-        throw new Error("Loading About page failed")
-    }
-    
-
-    const {data} = await res.json()
-    const {title, body, image} = data
-    console.log("data fetched",data)
-
-    const imageUrl = image?.url
-    const fullImageUrl = imageUrl
-        ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${imageUrl}`
-        : "/blogImage.svg"
-    const altText = image?.alternativeText || "About Page"
-    console.log("url of image",imageUrl)
-    console.log("alt text of image",altText)
 
     return (
-    <main className="p-8 max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold mb-6">
-            {title}
-        </h1>
+    <main className="min-h-screen py-16 px-6">
+        <div className="max-w-3xl mx-auto">
 
-        <Image
-            src={fullImageUrl}
-            alt={altText}
-            width={800}
-            height={500}
-            className="rounded-lg mb-8"
-        />
+          <h1 className="text-5xl font-bold text-center mb-1 py-5">
+            Blogging Website by jiChris
+          </h1>
 
-      
-        <section className="prose prose-lg italic border-l-4 pl-4">
-            <BlocksRenderer content={body} />
-        </section>
+          <div className="overflow-hidden rounded-2xl shadow-xl mb-12">
+            <Image
+              src="/template.svg"
+              alt="template image for about page"
+              width={800}
+              height={500}
+              className="w-full h-auto"
+            />
+          </div>
+
+          <section className="bg-white p-8 md:p-10 text-gray-700">
+            <div className="space-y-4 text-lg">
+              This is a Blogging Website name 
+              NextJS(web) + Strapi(cms)//not using this now to learn more about apis
+              for learning how a full stack project works with learning SEO optimization later.
+
+              Features to implement:-
+              -Adding a functional "Save Post" button
+              -Adding Session Manager and cookies to store user data for the entire session
+              -Making a Subscription Service
+              -Adding a Login normally and then using a MagicLInk
+              -Profile Page
+              -Sorting & Filter Buttons on the Blogs List Page
+              -Better Navbar
+              -Better Footer
+            </div>
+          </section>
+
+        </div>
     </main>
   )
 }

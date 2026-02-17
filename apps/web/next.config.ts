@@ -7,8 +7,9 @@ const nextConfig: NextConfig = {
   },
 
   images: {
-    domains: ["localhost"],
-  },
+    domains: ["localhost" , "www.svgrepo.com"]
+  }
 };
+
 
 export default nextConfig;
