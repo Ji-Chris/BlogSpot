@@ -18,5 +18,5 @@ export const auth = betterAuth({
         }
   },
 
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.AUTH_SECRET,
 })
