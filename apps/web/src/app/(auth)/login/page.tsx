@@ -1,5 +1,6 @@
 "use client"
 
+import { authClient } from "@/lib/auth-client"
 import { useState } from "react"
 import LoginButtons from "@/components/Login/LoginButtons"
 import Link from "next/link"
@@ -12,7 +13,16 @@ export default function LoginPage() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    const { data, error } = await authClient.signIn.email({
+        email,
+        password,
 
+
+        callbackURL: "/",
+
+        // "rememberMe :" defaults to true
+
+    })
     try {
       // without auth 
       const res = await fetch("/api/auth/login", {
@@ -76,7 +86,7 @@ export default function LoginPage() {
 
         <p className="text-sm text-center text-gray-600">
           <Link href="/register" className="underline">
-            Sign up instead?
+            New User?
           </Link>
         </p>
       </form>
