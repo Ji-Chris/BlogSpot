@@ -1,6 +1,6 @@
 "use client"
 
-import { signIn } from "next-auth/react"
+import { authClient } from "@/lib/auth-client"
 import Image from "next/image"
 
 
@@ -26,19 +26,23 @@ const providers = [
 ]
 
 export default function LoginButtons(){
+  async function handleSocialLogin(providerId: string) {
+    await authClient.signIn.social({
+      provider: providerId as "github" | "google" | "discord",
+      callbackURL: "/"
+    })
+  }
     return (
-         <div className="grid grid-cols-3 gap-3 max-w-md">
-      {providers.map((provider) => (
-        <button
-          key={provider.id}
-          type="button"
-          onClick={() => signIn(`${provider.id}`)}
-          className="cursor-pointer flex justify-center items-center
-                     transition ease-in duration-200
-                     text-base font-semibold shadow-md hover:bg-gray-200
-                     focus:outline-none focus:ring-2 focus:ring-offset-2
-                     rounded-lg p-3"
-        >
+      <div className="grid grid-cols-3 gap-3 max-w-md">
+        {providers.map((provider) => (
+          <button
+            key={provider.id}
+            type="button"
+            onClick={() => handleSocialLogin(provider.id)}
+            className="cursor-pointer flex justify-center items-center transition 
+            ease-in duration-200 text-base font-semibold shadow-md hover:bg-gray-200 
+            focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg p-3"
+          >
           <Image
             src={provider.link}
             alt={`${provider.label} button`}

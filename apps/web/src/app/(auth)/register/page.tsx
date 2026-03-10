@@ -3,9 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { useState } from "react";
-import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { username } from "better-auth/plugins";
 
 export default function RegisterPage() {
     const router = useRouter();
@@ -16,8 +14,10 @@ export default function RegisterPage() {
     const [name,setName] = useState("")
     const [image,setImage] = useState("/default-pfp.svg")
     const [loading,setLoading] = useState(false)
+    const [error,setError] = useState<string | null>(null)
 
     async function handleSubmit(e: React.FormEvent){
+        e.preventDefault();
         if (password != passwordCheck){
             alert("Passwords do not match")
             return;
@@ -51,7 +51,10 @@ export default function RegisterPage() {
                     Create Account
                 </h1>
 
-                <form className="space-y-6">
+                <form 
+                className="space-y-6"
+                onSubmit={handleSubmit}
+                >
 
                     {/* Name */}
                     <div>

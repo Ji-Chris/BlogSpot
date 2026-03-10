@@ -4,42 +4,34 @@ import { authClient } from "@/lib/auth-client"
 import { useState } from "react"
 import LoginButtons from "@/components/Login/LoginButtons"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
-  const [lloading, setLoading] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const router = useRouter()
 
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    const { data, error } = await authClient.signIn.email({
+    e.preventDefault();
+    setLoading(true);
+
+    const { data,error} = await authClient.signIn.email({
         email,
         password,
-
-
         callbackURL: "/",
 
-        // "rememberMe :" defaults to true
-
     })
-    try {
-      // without auth 
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      })
 
-      if (!res.ok) {
-        throw new Error("Invalid credentials")
-      }
-
-      // push in router later
-      window.location.href = "/"
-    } catch (err: any) {
-      console.log(err.message)
+    if (error) {
+      setError(error.message?? "Something fucked up")
+      setLoading(false)
+      return
     }
+
+    router.push("/")
   }
 
   return (
@@ -77,8 +69,12 @@ export default function LoginPage() {
         </div>
 
         <button
-          className="cursor-pointer bg-sky-500 text-black py-2 rounded hover:bg-blue-600 transition ease-in duration-200 "
-        > Login
+          type="submit"
+          disabled = {loading}
+          className="cursor-pointer bg-sky-500 text-black py-2 rounded hover:bg-blue-600 transition 
+          ease-in duration-200 disabled:cursor-not-allowed">
+
+          {loading? "Logging In ...." : "Login"}
         </button>
 
 
