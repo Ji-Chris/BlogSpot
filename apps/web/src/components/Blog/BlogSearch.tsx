@@ -83,7 +83,7 @@ export default function BlogSearchList() {
                   <h2 className="font-bold text-xl">{post.title}</h2>
                   <p>{post.body}</p>
                   <Link href={`/blog/${post.id}`}>
-                    <h6 className="text-blue-600 text-blue-600 hover:text-blue-800 transition">
+                    <h6 className="text-blue-600 hover:text-blue-800 transition">
                         Read More
                     </h6>
                   </Link>
