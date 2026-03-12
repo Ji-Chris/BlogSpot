@@ -56,12 +56,13 @@ export default function Navbar() {
           {dropdownOpen && (
             <div className="absolute right-0 mt-2 w-48 bg-white text-gray-900 rounded-lg shadow-lg py-1 z-50">
               <Link
-                href="/profile"
+                href={`/profile/${session.user.username}`}
                 onClick={() => setDropdownOpen(false)}
                 className="block px-4 py-2 hover:bg-gray-100 text-sm"
               >
                 Profile
               </Link>
+
               <Link
                 href="/settings"
                 onClick={() => setDropdownOpen(false)}
@@ -69,13 +70,15 @@ export default function Navbar() {
               >
                 Settings
               </Link>
+
               <Link
-                href="/my-posts"
+                href="/profile/my-posts"
                 onClick={() => setDropdownOpen(false)}
                 className="block px-4 py-2 hover:bg-gray-100 text-sm"
               >
                 My Posts
               </Link>
+              
               <hr className="my-1 border-gray-200" />
               <button
                 onClick={handleLogout}
